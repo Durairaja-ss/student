@@ -7,6 +7,7 @@
     <link rel="website icon" type="jpg" href="logo.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+       
 </head>
 <body>
 
@@ -26,6 +27,9 @@
                                 <th>Rollno</th>
                                 <th>Age</th>
                                 <th>Mobile</th>
+                                <th>Gender</th>
+                                <th>Skill</th>
+                                <th>Department</th>
                                 <th>Options</th>
                             </tr>
                         </thread>
@@ -40,16 +44,18 @@
                                     $run = mysqli_query($connection, $sql);
 
                                     $id= 1;
-
-                                    while($row = mysqli_fetch_array($run))
+                                    while($row = mysqli_fetch_array($run)){
                                     {
                                         $uid=$row['id'];
                                         $name=$row['name'];
                                         $rollno=$row['rollno'];
                                         $age=$row['age'];
                                         $mobile=$row['mobile'];
-                                        
-                                
+                                        $gender=$row['gender'];
+                                        $Skills = $row['skill'];
+                                        $dept=$row['department']; 
+                                    }
+                                   
                                 ?>
                                     
 
@@ -58,7 +64,10 @@
                                         <td><?php echo $name ?></td>
                                         <td><?php echo $rollno ?></td>
                                         <td><?php echo $age ?></td>
-                                        <td><?php echo $mobile ?></td> 
+                                        <td><?php echo $mobile ?></td>
+                                        <td><?php echo $gender ?></td>
+                                        <td><?php echo $Skills ?></td>
+                                        <td><?php echo $dept ?></td>  
                                         
                                         <td>
                                             <button class="btn btn-primary"> <a href='edit.php?edit=<?php echo $uid ?>'class="text-light">Edit</a> </button> 
@@ -66,7 +75,7 @@
                                     </td>
                                     </tr>
 
-                                        <?php $id++;} ?>
+                                        <?php $id++; }?>
                         </tbody>   
                     </table>
                     

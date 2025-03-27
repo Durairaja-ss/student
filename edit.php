@@ -15,9 +15,10 @@
             $rollno=$row['rollno'];
             $age=$row['age'];
             $mobile=$row['mobile'];
-        
+            $gender=$row['gender'];
+            $dept=$row['department'];
+            $Skills = $row['Skill'];
         }
-    
 
 ?>
 
@@ -32,12 +33,16 @@
     if(isset($_POST['submit']))
         {
             $edit = $_GET['edit'];
-             $name = $_POST['name'];
-             $rollno = $_POST['rollno'];
-             $age = $_POST['age'];
-             $mobile = $_POST['mobile'];
+            $name = $_POST['name'];
+            $rollno = $_POST['rollno'];
+            $age = $_POST['age'];
+            $mobile = $_POST['mobile'];
+            $gender=$_POST['gender'];
+            $dept=$_POST['department'];
+            $Skills =$_POST['Skill'];
+            
 
-             $sql = "update studentapp set name= '$name',rollno= '$rollno',age='$age',mobile='$mobile' where id = '$edit'";
+             $sql = "update studentapp set name= '$name',rollno= '$rollno',age='$age',mobile='$mobile',gender='$gender',Skill='$Skills','department'=$dept where id = '$edit'";
 
 
              if(mysqli_query($connection,$sql))
@@ -91,6 +96,36 @@
                         <div class="mobile">Mobile</label>
                             <input type="number" name="mobile" class="form-control" placeholder="Enter Number" value="<?php echo $mobile ?>">
                         </div> 
+                        <div>
+                            <label>Choose your gender:</label><br>                        
+                            <input type="radio" id="male" name="gender" value="Male">
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="Female">
+                            <label for="female">Female</label>
+                        </div>
+                        <div>
+                        <label>Select your skills:</label><br>
+                            <input type="checkbox" id="php" name="skill" value="PHP">
+                            <label for="PHP">PHP</label><br>
+                            <input type="checkbox" id="html" name="skill" value="HTML">
+                            <label for="html">HTML</label><br>
+                            <input type="checkbox" id="cpp" name="skill" value="Cpp">
+                            <label for="cpp">C#</label><br>
+                            <input type="checkbox" id="python" name="skill" value="Python">
+                            <label for="python">PYTHON</label><br>
+                    </div>
+                    <div class="form-group">
+                                    <label for="dept">Department</label><br/>
+                                    <input list="Dept-options" id="dept" name="department">
+                                    <datalist id="Dept-options">
+                                        <option value="CSE">
+                                        <option value="IT">
+                                        <option value="EEE">
+                                        <option value="ECE">
+                                        <option value="AUTOMOBILE">
+                                        <option value="MECHANICAL">
+                                    </datalist>                        
+                                </div>
                         <br>
                         <br>
                         <input type="submit" class="btn btn-primary" name="submit" value="Edit">
